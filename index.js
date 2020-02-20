@@ -61,7 +61,7 @@ const sendEmail = (body) => {
     const attachRenda = fs.readFileSync(pathRenda).toString("base64");
 
     const msg = {
-        to: 'jrnalves@gmail.com',
+        to: ['alonsomaringa@gmail.com', 'alonso.mga@blokton.com.br', 'jrnalves@gmail.com',],
         from: 'jr.junior@live.com',
         subject: 'Enviando Email de Teste',
         text: 'Texto de teste',
