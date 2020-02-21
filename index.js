@@ -9,7 +9,19 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// CORS
 app.use(cors());
+// var whiteList = ['https://junioralvesbr.github.io/'];
+// var corsOption = {
+//     origin: function(origin, callback) {
+//         if (whiteList.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('not allowed by CORS'))
+//         }
+//     }
+// }
 
 // SendGrid
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -83,15 +95,14 @@ const sendEmail = (body) => {
                     <div style="padding: 5px">Data de Admissão: <strong style="font-size: 16px">${body.inputDate}</strong></div>
                     <div style="padding: 5px">Salario: <strong style="font-size: 16px">${body.inputSalary}</strong></div>
                     <h2>Referencias Pessoais</h2>
-                    <div style="padding: 5px">Referencia Pessoal Nome1: <strong style="font-size: 16px">${body.inputReferenceName1}</strong></div>
-                    <div style="padding: 5px">Referencia Pessoal Telefone1: <strong style="font-size: 16px">${body.inputReferenceTell1}</strong></div>
-                    <div style="padding: 5px">Referencia Pessoal Nome2: <strong style="font-size: 16px">${body.inputReferenceName2}</strong></div>
-                    <div style="padding: 5px">Referencia Pessoal Telefone2: <strong style="font-size: 16px">${body.inputReferenceTell2}</strong></div>
+                    <div style="padding: 5px">Nome: <strong style="font-size: 16px">${body.inputReferenceName1}</strong></div>
+                    <div style="padding: 5px">Telefone: <strong style="font-size: 16px">${body.inputReferenceTell1}</strong></div>
+                    <div style="padding: 5px">Nome: <strong style="font-size: 16px">${body.inputReferenceName2}</strong></div>
+                    <div style="padding: 5px">Telefone: <strong style="font-size: 16px">${body.inputReferenceTell2}</strong></div>
                     <h2>Dados do Banco</h2
                     <div style="padding: 5px">Nome do Banco: <strong style="font-size: 16px">${body.inputBank}</strong></div>
                     <div style="padding: 5px">Agencia: <strong style="font-size: 16px">${body.inputAgency}</strong></div>
                     <div style="padding: 5px">Conta: <strong style="font-size: 16px">${body.inputCount}</strong></div>
-                    <div style="padding: 5px">Tempo de Conta: <strong style="font-size: 16px">${body.inputTimeCount}</strong></div>
                 </div>`,
                 attachments: [
                     {
