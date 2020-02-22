@@ -79,9 +79,13 @@ const sendEmail = (body) => {
         text: 'Texto de teste',
         html: `<div>
                     <div style="padding: 5px">Nome: <strong style="font-size: 16px">${body.name}</strong></div>
-                    <div style="padding: 5px">Telefone: <strong style="font-size: 16px">${body.telePhone}</strong></div>
                     <div style="padding: 5px">Celular: <strong style="font-size: 16px">${body.cellPhone}</strong></div>
+                    <div style="padding: 5px">Telefone: <strong style="font-size: 16px">${body.telePhone}</strong></div>
+                    <div style="padding: 5px">Email: <strong style="font-size: 16px">${body.email}</strong></div>
+                    <h2>Estado Civil</h2>
                     <div style="padding: 5px">Estado Civil: <strong style="font-size: 16px">${body.inputCivil}</strong></div>
+                    <div style="padding: 5px">Nome Conjuge: <strong style="font-size: 16px">${body.nomeConjuge}</strong></div>
+                    <div style="padding: 5px">Data Nascimento: <strong style="font-size: 16px">${body.dataConjuge}</strong></div>
                     <h2>Endereço Residencial</h2>
                     <div style="padding: 5px">Endeeço: <strong style="font-size: 16px">${body.inputAddress}</strong></div>
                     <div style="padding: 5px">Bairro: <strong style="font-size: 16px">${body.inputDistrict}</strong></div>
