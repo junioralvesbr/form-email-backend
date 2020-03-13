@@ -79,6 +79,7 @@ const sendEmail = (body) => {
         text: 'Formulario financimento',
         html: `<div>
                     <div style="padding: 5px">Nome: <strong style="font-size: 16px">${body.name}</strong></div>
+                    <div style="padding: 5px">CPF: <strong style="font-size: 16px">${body.cpf}</strong></div>
                     <div style="padding: 5px">Celular: <strong style="font-size: 16px">${body.cellPhone}</strong></div>
                     <div style="padding: 5px">Telefone: <strong style="font-size: 16px">${body.telePhone}</strong></div>
                     <div style="padding: 5px">Email: <strong style="font-size: 16px">${body.email}</strong></div>
