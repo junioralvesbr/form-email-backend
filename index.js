@@ -74,7 +74,7 @@ const sendEmail = (body) => {
 
     const msg = {
         to: ['alonsomaringa@gmail.com', 'alonso.mga@blokton.com.br', 'jrnalves@gmail.com'],
-        from: 'jr.junior@live.com',
+        from: 'alonsomaringa@gmail.com',
         subject: `Formulario de financiamento do ${body.name}`,
         text: 'Formulario financimento',
         html: `<div>
