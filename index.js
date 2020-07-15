@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // CORS
@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
         cb(null, `${file.fieldname}.png`);
     }
 });
-const upload = multer({storage});
+const upload = multer({ storage });
 
 
 // Metodos Servidor
@@ -45,17 +45,17 @@ app.get('/', (req, res) => {
 })
 
 app.post('/uploads', upload.fields([
-    {name: 'imageDocument', maxCount: 1},
-    {name: 'imageComp', maxCount: 1},
-    {name: 'imageRenda', maxCount: 1}
+    { name: 'imageDocument', maxCount: 1 },
+    { name: 'imageComp', maxCount: 1 },
+    { name: 'imageRenda', maxCount: 1 }
 ]), (req, res, next) => {
-    res.json({message: 'upload sucess'});
+    res.json({ message: 'upload sucess' });
 })
 
 app.post('/', (req, res) => {
     const body = req.body;
-    
-    setTimeout(function() {
+
+    setTimeout(function () {
         sendEmail(body);
     }, 10000)
 
@@ -74,7 +74,7 @@ const sendEmail = (body) => {
 
     const msg = {
         to: ['alonsomaringa@gmail.com', 'alonso.mga@blokton.com.br', 'jrnalves@gmail.com'],
-        from: 'alonsomaringa@gmail.com',
+        from: 'jr.junior@live.com',
         subject: `Formulario de financiamento do ${body.name}`,
         text: 'Formulario financimento',
         html: `<div>
@@ -109,34 +109,34 @@ const sendEmail = (body) => {
                     <div style="padding: 5px">Agencia: <strong style="font-size: 16px">${body.inputAgency}</strong></div>
                     <div style="padding: 5px">Conta: <strong style="font-size: 16px">${body.inputCount}</strong></div>
                 </div>`,
-                attachments: [
-                    {
-                        content: attachDocument,
-                        filename: "imageDocument.png",
-                        type: "image/png",
-                        disposition: "attachment",
-                        contentId: "imageDocument"
-                    },
-                    {
-                        content: attachComp,
-                        filename: "imageComp.png",
-                        type: "image/png",
-                        disposition: "attachment",
-                        contentId: "imageComp"
-                    },
-                    {
-                        content: attachRenda,
-                        filename: "imageRenda.png",
-                        type: "image/png",
-                        disposition: "attachment",
-                        contentId: "imageRenda"
-                    }
-                ]
+        attachments: [
+            {
+                content: attachDocument,
+                filename: "imageDocument.png",
+                type: "image/png",
+                disposition: "attachment",
+                contentId: "imageDocument"
+            },
+            {
+                content: attachComp,
+                filename: "imageComp.png",
+                type: "image/png",
+                disposition: "attachment",
+                contentId: "imageComp"
+            },
+            {
+                content: attachRenda,
+                filename: "imageRenda.png",
+                type: "image/png",
+                disposition: "attachment",
+                contentId: "imageRenda"
+            }
+        ]
     };
 
     sgMail.send(msg);
 
-    setTimeout(function() {
+    setTimeout(function () {
         deleteFiles(pathDocument);
         deleteFiles(pathComp);
         deleteFiles(pathRenda);
@@ -144,12 +144,12 @@ const sendEmail = (body) => {
 }
 
 const deleteFiles = (props) => {
-    fs.stat(props, function(err, stats) {
+    fs.stat(props, function (err, stats) {
         if (err) {
             return console.error(err);
         }
 
-        fs.unlinkSync(props, function(err) {
+        fs.unlinkSync(props, function (err) {
             if (err) console.log(err);
             console.log('file deleted sucessfully');
         })
